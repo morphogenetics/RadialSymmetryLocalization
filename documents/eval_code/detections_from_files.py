@@ -5,12 +5,12 @@ import csv
 import copy
 from scipy import spatial
 import glob
-#####Program takes in a list of filenames. For each file name in list opens it and assess the number of accurate detections inthe file
+#####Program takes in a list of filenames. For each file name in list opens it and assess the number of accurate detections in the file
 
-#This function compares two arrays 
+#profile_detections compares two arrays 
 #Unmod = ground truth array
 #More_than = detections from one of the programs
-#Function checks if any points in the non ground truth array are very close / match with points 
+#Function checks if any points in the non ground truth array are very close / correspond points 
 #in the gt array it they are under certain distance
 
 #Returns # of undetected ground truth points, spurious detections, and average distance between real detection and associated points
@@ -134,6 +134,7 @@ def loc_file_name_help(detected_name,current_dir):
 #Loops through plausible filenames list
 #of all plausible detections
 #Doesnt include vey large ground truth /detection files as they take a very long time to run
+#In loop profile_detections is run on detection files and their corresponding ground truth arrays
 with open("/home/lepstei/rs_scratch/gridsearchresults.txt", "w") as f:
     f.write("Program_used" +"\t"+ "Image_used" + "\t"+"Parameter_string" + "\t"+ "Simulation_settings" + "\t" + "Missed_detections" + "\t" + "False_detections"+"\t"+"euc_dist" + "\n")
     where_is_base_dir = "/scratch/AG_Preibisch/Ella/RS_and_FQ_gridsearch_compare/Selected_simulation"
