@@ -1,5 +1,4 @@
 import pandas as pd
-#TODO split this into two seperate programs; its a bit big.
 #read in file from gridsearch CSV 
 stats_file = "/home/lpe/Desktop/gridsearchresults.csv"
 
@@ -27,8 +26,11 @@ with open(stats_file) as csvfile:
         index.append(entry[0])
 
 ################# Process results of grid search evaluation
-####This chunk of code finds the detection with the lowest detection score (points missed +erroneous point created/ points in corresponding ground truth file) per images per parameter
-####The output files with low detection scores are then evaluated on how close the detections are to their associated points. This is contained in the euc_dist 1d array. With this info we find per iamge/setting the best output file across Fishquant and Radial symmetry that have reallly low detection scores and low mean euclidena distance measure ments
+####This chunk of code finds the detection with the lowest detection score (points missed +erroneous point created/ points in corresponding ground truth file)
+#per images per parameter
+####The output files with low detection scores are then evaluated on how close the detections are to their associated points. 
+#This is contained in the euc_dist 1d array. With this info we find per iamge/setting the best detection file across 
+#Fishquant and Radial symmetry data generation combinations. The best detection files have reallly low detection scores and low mean euclidena distance measurements
 
 Read in files convert to array/type
 image_used = np.asarray(image_used)
@@ -90,7 +92,7 @@ for setting in simulation_settings:
     euc_dist_subset = euc_dist[exp_filter]
     
     unq_imgs = np.unique(img_subset)
-# Again subset and iterate over each image contaed with in settings folde
+# Again subset and iterate over each image contained with in a settings folder
     for img in unq_imgs:
         #print(img)
         matching_ims = (np.asarray((img_subset) == img))
